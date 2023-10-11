@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react'
 import CardTitle from '../../../components/CardTitle'
 import { useIntl } from 'react-intl'
 import { Card, Col, Row, Statistic } from 'antd'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
-export default function Schedule({ }) {
+export default function Schedule() {
     const { formatMessage } = useIntl()
     const overview = useSelector((state) => state.account.statistics)
     const { feedbacksNum, commentsNum } = overview
