@@ -200,7 +200,7 @@ export default function UploadTutorialModal({ getData, removeTab }) {
                         <Select.Option value="l3">l3</Select.Option>
                     </Select>
                 </Form.Item>
-                <Form.Item label="Colorie" name="colorie" rules={[{ required: true, message: 'Please input colorie!', }]}>
+                <Form.Item label="Colorie" style={{ marginBottom: 0 }} rules={[{ required: true, message: 'Please input colorie!', }]}>
                     {/* <Input placeholder='xx - xx' /> */}
                     <Form.Item
                         name="lowerEstimateColorie"
