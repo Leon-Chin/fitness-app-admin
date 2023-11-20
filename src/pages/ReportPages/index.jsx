@@ -9,41 +9,6 @@ import OperationForUser from '../../components/OperationForReport';
 import { useSelector } from 'react-redux';
 import { useLoaderData } from 'react-router-dom';
 import dayjs from 'dayjs';
-// const data = [
-//     {
-//         key: '1',
-//         _id: '312847123490861238461289',
-//         type: 'blog',
-//         targetID: "sdfioweifsodijfsldkfja;",
-//         username: 'John Brown',
-//         userID: 'ksddsfasdfaslfa',
-//         content: 'New York No. 1 Lake Park',
-//         createtime: 'today',
-//         status: 'waiting',
-//     },
-//     {
-//         key: '2',
-//         _id: '312847123490861238461289',
-//         type: 'comment',
-//         targetID: "sdfioweifsodijfsldkfja;",
-//         username: 'John leon',
-//         userID: 'ksdlfasdfasdfasdffa',
-//         content: 'New York No. 1 Lake Park',
-//         createtime: 'today',
-//         status: 'done',
-//     },
-//     {
-//         key: '3',
-//         _id: '312847123490861238461289',
-//         type: 'user',
-//         targetID: "sdfioweifsodijfsldkfja;",
-//         username: 'chin Brown',
-//         userID: 'ksddsfasdfasdflfa',
-//         content: 'New York No. 1 Lake ParkNew York No. 1 Lake ParkNew York No. 1 Lake ParkNew York No. 1 Lake ParkNew York No. 1 Lake ParkNew York No. 1 Lake ParkNew York No. 1 Lake ParkNew York No. 1 Lake Park',
-//         createtime: 'today',
-//         status: 'waiting',
-//     },
-// ];
 
 export default function ReportUser() {
     const { formatMessage } = useIntl()

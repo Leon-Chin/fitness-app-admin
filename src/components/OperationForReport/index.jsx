@@ -5,8 +5,6 @@ import ManageComment from './ManageComment';
 import ProcessStatus from '../../pages/ReportPages/components/processStatus';
 import ManageUser from './ManageUser';
 import ManageBlog from './ManageBlog';
-import CardTitle from '../CardTitle';
-
 
 export default function OperationForReport({ isManageModalOpen, setIsManageModalOpen, report }) {
     const { formatMessage } = useIntl()

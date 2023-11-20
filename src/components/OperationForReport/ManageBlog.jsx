@@ -2,10 +2,8 @@ import { useIntl } from 'react-intl'
 import CardTitle from '../CardTitle';
 import { Button, Select, Input, Space, message } from 'antd';
 import { useState } from 'react';
-import {
-    SendOutlined
-} from '@ant-design/icons';
-import { deleteBlog } from '../../api/admin.api';
+import { SendOutlined } from '@ant-design/icons';
+import { deleteBlog, reply } from '../../api/admin.api';
 const { TextArea } = Input;
 
 export default function ManageBlog({ report, setIsManageModalOpen }) {
@@ -35,7 +33,8 @@ export default function ManageBlog({ report, setIsManageModalOpen }) {
     const handleReply = async () => {
         const reqData = { blogID: report.targetID, reporterID: report.userID, reportID: report._id }
         try {
-            const res = await c
+            console.log('daozhele ');
+            const res = await reply(report.userID, { content: response })
         } catch (error) {
 
         }
@@ -46,18 +45,8 @@ export default function ManageBlog({ report, setIsManageModalOpen }) {
                 placeholder="Select the operation"
                 onChange={onMethodChange}
                 options={[
-                    {
-                        value: 'reply',
-                        label: 'Reply to informer',
-                    },
-                    // {
-                    //     value: 'warning',
-                    //     label: 'Warning to informer',
-                    // },
-                    {
-                        value: 'delete',
-                        label: 'Delete the blog',
-                    }
+                    { value: 'reply', label: 'Reply to informer', },
+                    { value: 'delete', label: 'Delete the blog', }
                 ]}
             />} />
             {method && <div className='OperationTarget-Actioin-comment-main' style={{ marginTop: 24 }}>

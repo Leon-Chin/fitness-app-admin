@@ -46,22 +46,9 @@ export default function ManageUser({ report, setIsManageModalOpen }) {
                 placeholder="Select the operation"
                 onChange={onMethodChange}
                 options={[
-                    {
-                        value: 'reply',
-                        label: 'Reply to informer',
-                    },
-                    // {
-                    //     value: 'warning',
-                    //     label: 'Warning user',
-                    // },
-                    {
-                        value: 'mute',
-                        label: 'Mute user',
-                    },
-                    {
-                        value: 'block',
-                        label: 'Block user',
-                    },
+                    { value: 'reply', label: 'Reply to informer', },
+                    { value: 'mute', label: 'Mute user', },
+                    { value: 'block', label: 'Block user', },
                 ]}
             />} />
             {method && <div className='OperationTarget-Actioin-user-main' style={{ marginTop: 24 }}>
