@@ -31,5 +31,6 @@ export const enUS_commonText = {
     'block': 'Block',
     "actionHistory": 'Operation History',
     'noAction': 'No operation',
-    'sort': 'Sort'
+    'sort': 'Sort',
+    'music': "Music"
 };

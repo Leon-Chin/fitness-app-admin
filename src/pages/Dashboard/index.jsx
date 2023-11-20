@@ -21,6 +21,7 @@ const Dashboard = () => {
     getItem(formatMessage({ id: 'app.dashboard.menu.report' }), '/report', <FileTextOutlined />),
     getItem(formatMessage({ id: 'app.dashboard.menu.manage' }), '/manage', <DatabaseOutlined />, [
       getItem(formatMessage({ id: 'app.dashboard.menu.manageTutorial' }), '/manage/tutorial'),
+      getItem(formatMessage({ id: 'app.dashboard.menu.manageMusic' }), '/manage/music'),
     ]),
     getItem(formatMessage({ id: 'app.dashboard.menu.feedback' }), '/feedback', <SolutionOutlined />),
   ]

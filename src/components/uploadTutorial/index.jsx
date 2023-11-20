@@ -7,7 +7,7 @@ import { useRef, useState } from 'react';
 import { createTutorial } from '../../api/tutorial.api'
 
 const equipmentsOptions = [
-    { value: 'yaling', label: 'yaling' },
+    { value: 'dumbbell', label: 'dumbbell' },
     { value: '跳绳', label: '跳绳' },
 ]
 
@@ -164,9 +164,13 @@ export default function UploadTutorialModal({ getData, removeTab }) {
             <Form name="basic" ref={formRef} labelCol={{ span: 8, }} wrapperCol={{ span: 16, }} style={{ maxWidth: 600, }} initialValues={{ remember: true, }} onFinish={onFinish} onFinishFailed={onFinishFailed} autoComplete="off">
                 <Form.Item label="Type" name="type" rules={[{ required: true, message: 'Please select type!', }]}>
                     <Select>
-                        <Select.Option value="Yoga">Yoga</Select.Option>
-                        <Select.Option value="lose weight">lose weight</Select.Option>
-                        <Select.Option value="jump">jumping</Select.Option>
+                        <Select.Option value="yoga">Yoga</Select.Option>
+                        <Select.Option value="relax">Relaxation</Select.Option>
+                        <Select.Option value="stretching">Stretching</Select.Option>
+                        <Select.Option value="burning">Lose weight</Select.Option>
+                        <Select.Option value="rope">Rope</Select.Option>
+                        <Select.Option value="strength">Strength</Select.Option>
+                        <Select.Option value="spinning">Spinning</Select.Option>
                     </Select>
                 </Form.Item>
                 <Form.Item label="Tutorial name" style={{ marginBottom: 0 }} name="name" rules={[{ required: true }]}                >

@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Dashboard from "../pages/Dashboard"
 import ManageTutorial from '../pages/ManagePages/tutorial/index'
+import ManageMusic from '../pages/ManagePages/music/index'
 import Login from '../pages/Login'
 import Report from '../pages/ReportPages'
 import ErrorPage from '../pages/ErrorPage'
@@ -9,6 +10,7 @@ import ProtectedRouter from './protectedRouter'
 import Feedback from '../pages/Feedback'
 import { getAllTutorials } from '../api/tutorial.api'
 import { getAllFeedbacks, getAllReports, getStatistics } from '../api/admin.api'
+import { getallmusics } from '../api/music.api'
 const router = createBrowserRouter([
     {
         path: "/",
@@ -24,6 +26,11 @@ const router = createBrowserRouter([
                 path: "manage/tutorial",
                 element: <ProtectedRouter><ManageTutorial /></ProtectedRouter>,
                 loader: async () => await getAllTutorials()
+            },
+            {
+                path: "manage/music",
+                element: <ProtectedRouter><ManageMusic /></ProtectedRouter>,
+                loader: async () => await getallmusics()
             },
             {
                 path: "report",

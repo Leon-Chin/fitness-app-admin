@@ -31,5 +31,6 @@ export const zhCN_commonText = {
     'block': '封禁',
     "actionHistory": '历史操作',
     'noAction': "暂无操作",
-    'sort': '种类'
+    'sort': '种类',
+    'music': "音乐"
 };
