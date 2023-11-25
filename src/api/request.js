@@ -6,7 +6,7 @@ import { setGlobalState } from '@/store/global.store';
 const axiosInstance = axios.create({
     // baseURL: 'http://localhost:3001/api',
     baseURL: 'https://medal.onrender.com/api',
-    timeout: 6000,
+    // timeout: 6000,
 });
 
 axiosInstance.interceptors.request.use(

@@ -5,6 +5,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { storage } from '../../firebase'
 import { useRef, useState } from 'react';
 import { createTutorial } from '../../api/tutorial.api'
+import EXERCISETYPE from '../../constants/EXERCISETYPE';
 
 const equipmentsOptions = [
     { value: 'dumbbell', label: 'dumbbell' },
@@ -164,13 +165,7 @@ export default function UploadTutorialModal({ getData, removeTab }) {
             <Form name="basic" ref={formRef} labelCol={{ span: 8, }} wrapperCol={{ span: 16, }} style={{ maxWidth: 600, }} initialValues={{ remember: true, }} onFinish={onFinish} onFinishFailed={onFinishFailed} autoComplete="off">
                 <Form.Item label="Type" name="type" rules={[{ required: true, message: 'Please select type!', }]}>
                     <Select>
-                        <Select.Option value="yoga">Yoga</Select.Option>
-                        <Select.Option value="relax">Relaxation</Select.Option>
-                        <Select.Option value="stretching">Stretching</Select.Option>
-                        <Select.Option value="burning">Lose weight</Select.Option>
-                        <Select.Option value="rope">Rope</Select.Option>
-                        <Select.Option value="strength">Strength</Select.Option>
-                        <Select.Option value="spinning">Spinning</Select.Option>
+                        {Object.values(EXERCISETYPE).map((item, index) => <Select.Option key={index} value={item.value}>{item.label}</Select.Option>)}
                     </Select>
                 </Form.Item>
                 <Form.Item label="Tutorial name" style={{ marginBottom: 0 }} name="name" rules={[{ required: true }]}                >
