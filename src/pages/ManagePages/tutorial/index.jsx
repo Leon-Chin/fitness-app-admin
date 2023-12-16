@@ -147,11 +147,6 @@ export default function UploadTutorial() {
   // selected tutorial
   const [selectedTutorial, setSelectedTutorial] = useState()
 
-  // upload tutorial modal
-  const [isUploadTutorialOpen, setIsUploadTutorialOpen] = useState(false)
-  // edit tutorial modal
-  const [isEditTutorialOpen, setIsEditTutorialOpen] = useState(false)
-
   // detail drawer
   const [tutorialDetailDrawerOpen, setTutorialDetailDrawerOpen] = useState(false)
   const detailLabel = {
@@ -242,14 +237,7 @@ export default function UploadTutorial() {
       remove(targetKey);
     }
   };
-  const mainContent = <>
-    <CardTitle title={formatMessage({ id: 'app.manage.allTutorials' })} extra={<Button type="primary" onClick={() => setIsUploadTutorialOpen(true)}><PlusOutlined />{formatMessage({ id: 'add' })}</Button>} />
-    <div className="content-mainbox-content-left-card">
-      <div className="content-mainbox-content-left-box">
-        <Table bordered={false} columns={TutorialCol(tableTitle, getColumnSearchProps, getData, setSelectedTutorial, setTutorialDetailDrawerOpen, setIsEditTutorialOpen)} dataSource={handleData} />
-      </div>
-    </div>
-  </>
+
   return (
     <div className='content-mainbox'>
       <Tabs type="editable-card" hideAdd items={items} onChange={onChange} activeKey={activeKey} onEdit={onEdit} />

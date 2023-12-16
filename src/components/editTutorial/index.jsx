@@ -5,6 +5,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { storage } from '../../firebase'
 import { useRef, useState } from 'react';
 import { createTutorial, updateTutorial } from '../../api/tutorial.api'
+import EXERCISETYPE from '../../constants/EXERCISETYPE';
 
 const equipmentsOptions = [
     { value: 'yaling', label: 'yaling' },
@@ -153,11 +154,9 @@ export default function EditTutorialModal({ getData, selectedTutorial, removeTab
         }
     };
     const onFinishFailed = (errorInfo) => {
-        console.log(errorInfo);
         message.error('Failed:', errorInfo)
     };
     const normFile = (e) => {
-        console.log('Upload event:', e);
         if (Array.isArray(e)) {
             return e;
         }
@@ -165,13 +164,11 @@ export default function EditTutorialModal({ getData, selectedTutorial, removeTab
     };
     return (
         <div>
-            <CardTitle title={'edit tutorial'} />
+            <CardTitle title={'Edit tutorial'} />
             <Form name="basic" initialValues={selectedTutorial} ref={editFormRef} labelCol={{ span: 8, }} wrapperCol={{ span: 16, }} style={{ maxWidth: 600, }} onFinish={onFinish} onFinishFailed={onFinishFailed} autoComplete="off">
                 <Form.Item label="Type" name="type" rules={[{ required: true, message: 'Please select type!', }]}>
                     <Select>
-                        <Select.Option value="Yoga">Yoga</Select.Option>
-                        <Select.Option value="lose weight">lose weight</Select.Option>
-                        <Select.Option value="jump">jumping</Select.Option>
+                        {Object.values(EXERCISETYPE).map((item, index) => <Select.Option key={index} value={item.value}>{item.label}</Select.Option>)}
                     </Select>
                 </Form.Item>
                 <Form.Item label="Tutorial name" style={{ marginBottom: 0 }} name="name" rules={[{ required: true }]}                >
@@ -205,7 +202,25 @@ export default function EditTutorialModal({ getData, selectedTutorial, removeTab
                         <Select.Option value="l3">l3</Select.Option>
                     </Select>
                 </Form.Item>
-                <Form.Item label="Colorie" name="colorie" rules={[{ required: true, message: 'Please input colorie!', }]}>
+                {/* <Form.Item label="Colorie" name="colorie" rules={[{ required: true, message: 'Please input colorie!', }]}>
+                    <Form.Item
+                        name="lowerEstimateColorie"
+                        rules={[{ required: true }]}
+                        style={{ display: 'inline-block' }}
+                    >
+                        <InputNumber placeholder='Lower' />
+                    </Form.Item>
+                    &nbsp;&nbsp;~&nbsp;&nbsp;
+                    <Form.Item
+                        name="higherEstimateColorie"
+                        rules={[{ required: true }]}
+                        style={{ display: 'inline-block' }}
+                    >
+                        <InputNumber placeholder='Higher' />
+                    </Form.Item>
+                </Form.Item> */}
+                <Form.Item label="Colorie" style={{ marginBottom: 0 }} rules={[{ required: true, message: 'Please input colorie!', }]}>
+                    {/* <Input placeholder='xx - xx' /> */}
                     <Form.Item
                         name="lowerEstimateColorie"
                         rules={[{ required: true }]}

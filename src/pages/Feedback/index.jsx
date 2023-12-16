@@ -5,7 +5,7 @@ import { useIntl } from 'react-intl';
 import DetailDrawer from './components/DetailDrawer';
 import DetailItem from './components/DetailItem'
 import FeedbackCol from './components/feedbackCol';
-import { getAllFeedbacks } from '../../api/admin.api'
+import { getAllFeedbacks, replyFeedback } from '../../api/admin.api'
 import { useLoaderData } from 'react-router-dom';
 const { TextArea } = Input;
 const data = [
@@ -44,7 +44,7 @@ export default function Feedback() {
     const { formatMessage } = useIntl()
 
     const allFeedbacks = useLoaderData()
-    
+
     const [selectedFeedback, setSelectedFeedback] = useState({})
     const [drawerOpen, setDrawerOpen] = useState(false);
     const showDrawer = (feedback) => {
@@ -60,22 +60,19 @@ export default function Feedback() {
     const [confirmLoading, setConfirmLoading] = useState(false);
     const handleReply = async () => {
         setConfirmLoading(true);
-        const { userID, _id } = selectedFeedback
         const param = {
-            userID,
-            feedbackID: _id,
-            adminResponse
+            feedback: selectedFeedback,
+            content: `Your feedback about: "${selectedFeedback.content}" has been received! ${adminResponse}`
         }
-        const res = await replyFeedback(param)
-        if (res?.status !== false) {
-            setReplyBoxOpen(false)
-            message.success('Reply successfully')
-        } else {
-            message.error('Error happen, try again please')
-        }
+        await replyFeedback(param).then(res => {
+            if (res.status !== false) {
+                setReplyBoxOpen(false)
+                message.success('Reply successfully')
+            } else {
+                message.error('Error happen, try again please')
+            }
+        })
         setConfirmLoading(false);
-
-
     }
     const detailLabel = {
         userID: formatMessage({ id: 'app.feedback.table.userID' }),
@@ -196,7 +193,7 @@ export default function Feedback() {
     return (
         <div className='content-mainbox' style={{ padding: 0, paddingTop: 8 }}>
             <Tabs type="card" size='large' items={[{ label: formatMessage({ id: 'app.dashboard.menu.feedback' }), key: '1' }]} />
-            <Table columns={FeedbackCol(tableTitle, showDrawer, showReplyBox, getColumnSearchProps)} dataSource={data} />
+            <Table columns={FeedbackCol(tableTitle, showDrawer, showReplyBox, getColumnSearchProps)} dataSource={allFeedbacks} />
             <DetailDrawer onClose={() => setDrawerOpen(false)} open={drawerOpen} items={DetailItem(detailLabel, selectedFeedback)} selectedFeedback={selectedFeedback} showReplyBox={showReplyBox} />
             <Modal
                 title={formatMessage({ id: 'app.feedback.table.reply' })}

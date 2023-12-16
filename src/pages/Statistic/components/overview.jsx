@@ -15,7 +15,7 @@ export default function Overview() {
             <div className='content-mainbox-statistic-overview-cards'>
                 <MyCard key={1} SVG={competitionSVG} title={formatMessage({ id: "user" })} value={overview?.usersNum} />
                 <MyCard key={2} navigation={"/manage/tutorial"} SVG={tutorialSVG} title={formatMessage({ id: "tutorial" })} value={overview?.tutorialsNum} />
-                <MyCard key={3} SVG={userSVG} title={formatMessage({ id: "comment" })} value={overview?.commentsNum} />
+                <MyCard key={3} SVG={userSVG} title={formatMessage({ id: "music" })} value={overview?.musicsNum} />
                 <MyCard key={4} SVG={blogSVG} title={formatMessage({ id: "blog" })} value={overview?.blogsNum} />
             </div>
         </div>

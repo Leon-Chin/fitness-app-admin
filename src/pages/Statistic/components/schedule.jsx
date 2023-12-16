@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 export default function Schedule() {
     const { formatMessage } = useIntl()
     const overview = useSelector((state) => state.account.statistics)
-    const { feedbacksNum, commentsNum } = overview
+    const { feedbacksNum, reportsNum } = overview
     const navigateTo = useNavigate()
     return (
         <div className='content-mainbox-statistic-schedule'>
@@ -25,7 +25,7 @@ export default function Schedule() {
                     <Card hoverable onClick={() => navigateTo('/report')}>
                         <Statistic
                             title={formatMessage({ id: "app.statistic.pendingReports" })}
-                            value={commentsNum}
+                            value={reportsNum}
                         />
                     </Card>
                 </Col>

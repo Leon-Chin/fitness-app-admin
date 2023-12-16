@@ -1,7 +1,7 @@
 import { Timeline } from 'antd';
 import ProcessStatus from './processStatus';
 
-const DetailItem = (detailLabel, { userID, createtime, status, content, adminResponse, updatedAt }) => {
+const DetailItem = (detailLabel, { userID, createdAt, status, content, adminResponse, updatedAt }) => {
     return [
         {
             key: '1',
@@ -13,7 +13,7 @@ const DetailItem = (detailLabel, { userID, createtime, status, content, adminRes
             key: '2',
             label: detailLabel.createtime,
             span: 2,
-            children: createtime/*'2019-04-24 18:00:00'*/,
+            children: new Date(createdAt).toLocaleDateString()/*'2019-04-24 18:00:00'*/,
         },
         {
             key: '3',
