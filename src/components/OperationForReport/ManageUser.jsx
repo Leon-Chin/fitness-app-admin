@@ -2,10 +2,8 @@ import { useIntl } from 'react-intl'
 import CardTitle from '../CardTitle';
 import { Select, DatePicker, Space, Button, Input, Form, message } from 'antd';
 import { useState } from 'react';
-import dayjs from 'dayjs';
 import { SendOutlined } from '@ant-design/icons';
 import { operateUser } from '../../api/admin.api';
-const { RangePicker } = DatePicker;
 const { TextArea } = Input
 
 export default function ManageUser({ report, setIsManageModalOpen }) {
@@ -23,8 +21,25 @@ export default function ManageUser({ report, setIsManageModalOpen }) {
         setMuteDate(e.$d)
     }
     const handleOperateUser = async (type) => {
-        if (muteDate) {
-            const reqData = type === 'mute' ? { operationType: 'mute', userID: report.targetID, reporterID: report.userID, reportID: report._id, muteDate } : { operationType: 'block', commentID: report.targetID, reporterID: report.userID, reportID: report._id }
+        if (type === 'mute') {
+            if (muteDate) {
+                const reqData = { operationType: 'mute', userID: report.targetID, reporterID: report.userID, reportID: report._id, muteDate }
+                try {
+                    const res = await operateUser(reqData)
+                    if (res?.success) {
+                        setIsManageModalOpen(false)
+                        location.reload()
+                    } else {
+                        message.error('error')
+                    }
+                } catch (error) {
+                    message.error(error)
+                }
+            } else {
+                message.error('please select the mute time')
+            }
+        } else {
+            const reqData = { operationType: 'block', userID: report.targetID, reporterID: report.userID, reportID: report._id }
             try {
                 const res = await operateUser(reqData)
                 if (res?.success) {
@@ -36,8 +51,6 @@ export default function ManageUser({ report, setIsManageModalOpen }) {
             } catch (error) {
                 message.error(error)
             }
-        } else {
-            message.error('please select the mute time')
         }
     }
     return (
@@ -58,12 +71,6 @@ export default function ManageUser({ report, setIsManageModalOpen }) {
                         <Button style={{ float: 'right' }} type='primary'><SendOutlined />{formatMessage({ id: 'send' })}</Button>
                     </Space>
                 </>}
-                {/* {method === 'warning' && <>
-                    <Space direction='vertical' size={'large'} style={{ display: 'flex' }}>
-                        <TextArea style={{ height: 120 }} onChange={onResponseChange} />
-                        <Button style={{ float: 'right' }} type='primary'><SendOutlined />{formatMessage({ id: 'send' })}</Button>
-                    </Space>
-                </>} */}
                 {method === 'mute' && <>
                     <Form
                         labelCol={{ span: 6 }}
@@ -80,8 +87,8 @@ export default function ManageUser({ report, setIsManageModalOpen }) {
                     </div>
                 </>}
                 {method === 'block' && <div style={{ display: 'flex', height: 30, alignItems: 'center', justifyContent: 'end' }}>
-                    <h3>Are u sure to block?</h3>
-                    <Button style={{ marginLeft: 20 }} type='primary' danger>{formatMessage({ id: 'block' })}</Button>
+                    <h3>Are u sure to block the user?</h3>
+                    <Button onClick={() => handleOperateUser('block')} style={{ marginLeft: 20 }} type='primary' danger>{formatMessage({ id: 'block' })}</Button>
                 </div>}
             </div>}
         </div>
