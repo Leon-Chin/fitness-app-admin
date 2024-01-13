@@ -32,5 +32,6 @@ export const zhCN_commonText = {
     "actionHistory": '历史操作',
     'noAction': "暂无操作",
     'sort': '种类',
-    'music': "音乐"
+    'music': "音乐",
+    'mute': '禁言时间',
 };

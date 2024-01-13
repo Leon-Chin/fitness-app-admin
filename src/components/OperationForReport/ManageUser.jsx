@@ -78,7 +78,7 @@ export default function ManageUser({ report, setIsManageModalOpen }) {
                         layout="horizontal"
                         style={{ maxWidth: 600 }}
                     >
-                        <Form.Item label="禁言时间">
+                        <Form.Item label={formatMessage({ id: 'mute' })}>
                             <DatePicker format='YYYY-MM-DD' onChange={(e) => handleBanDate(e)} />
                         </Form.Item>
                     </Form>
