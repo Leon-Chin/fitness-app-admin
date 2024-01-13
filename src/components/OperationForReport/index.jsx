@@ -27,6 +27,7 @@ export default function OperationForReport({ isManageModalOpen, setIsManageModal
             span: 3,
         },
     ];
+    console.log("report", report);
     return (
         <Modal width={630} zIndex={1001} title={formatMessage({ id: 'app.dashboard.menu.report' })} open={isManageModalOpen} footer={null} onCancel={() => setIsManageModalOpen(false)}>
             <div className='OperationTarget'>
