@@ -8,7 +8,6 @@ const axiosInstance = axios.create({
     // baseURL: 'https://medal.onrender.com/api',
     // timeout: 6000,
 });
-
 axiosInstance.interceptors.request.use(
     config => {
         store.dispatch(
@@ -16,7 +15,6 @@ axiosInstance.interceptors.request.use(
                 loading: true,
             }),
         );
-
         return config;
     },
     error => {
@@ -28,7 +26,6 @@ axiosInstance.interceptors.request.use(
         Promise.reject(error);
     },
 );
-
 axiosInstance.interceptors.response.use(
     config => {
         store.dispatch(
@@ -45,14 +42,12 @@ axiosInstance.interceptors.response.use(
             }),
         );
         let errorMessage = 'error';
-
         if (error?.message?.includes('Network Error')) {
             errorMessage = 'network connection error!';
         } else {
             errorMessage = error?.message;
         }
         error.message && $message.error(errorMessage);
-
         return {
             status: false,
             message: errorMessage,
@@ -60,7 +55,6 @@ axiosInstance.interceptors.response.use(
         };
     },
 );
-
 export const request = (method, url, data, config) => {
     switch (method) {
         case 'post':
