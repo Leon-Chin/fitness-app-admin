@@ -185,7 +185,7 @@ export default function UploadTutorial() {
     if (!alreadyHave) {
       const newPanes = [...items];
       newPanes.push({
-        label: "添加教程",
+        label: formatMessage({ id: 'addTutorial' }),
         children: <UploadTutorialModal getData={getData} removeTab={remove} />,
         key: newActiveKey,
       });

@@ -34,4 +34,7 @@ export const enUS_commonText = {
     'sort': 'Sort',
     'music': "Music",
     'mute': 'Mute Date',
+    "addMusic": "Add Music",
+    "addTutorial": "Add Tutorial",
+    "tutorialDetail": "Tutorial Detail",
 };

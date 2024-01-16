@@ -189,7 +189,7 @@ export default function UploadMusic() {
     if (!alreadyHave) {
       const newPanes = [...items];
       newPanes.push({
-        label: "添加音乐",
+        label: formatMessage({ id: 'addMusic' }),
         children: <UploadMusicModal getData={getData} removeTab={remove} />,
         key: newActiveKey,
       });

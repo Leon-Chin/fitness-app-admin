@@ -34,4 +34,7 @@ export const zhCN_commonText = {
     'sort': '种类',
     'music': "音乐",
     'mute': '禁言时间',
+    "addMusic": "添加音乐",
+    "addTutorial": "添加教程",
+    "tutorialDetail": "教程详情",
 };
